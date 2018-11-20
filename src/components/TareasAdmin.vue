@@ -39,13 +39,11 @@ export default {
   },
   methods: {
     addItem(){
-
       if(this.tarea.title.toString().trim() == '')
       return false
-
       this.$store.dispatch("NEW_TODO", this.tarea).then(() => {
           this.tarea = {
-            id: randomID.generate(),
+            //id: randomID.generate(),
             completed: false,
             title: ''
         }

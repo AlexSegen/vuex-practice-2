@@ -13,6 +13,7 @@ export default {
         return $http.delete(`${RESOURCE_NAME}/${payload.id}`);
     },
     updateStatus(payload){
+        payload.completed = !payload.completed
         return $http.put(`${RESOURCE_NAME}/${payload.id}`, payload);
     }
 }

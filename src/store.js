@@ -6,11 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tarea: {
-
-    },
+    tarea: {},
     tareas: []
-
   },
   getters: {
     TODOS: state => {
@@ -31,8 +28,8 @@ export default new Vuex.Store({
       state.tareas.splice(state.tareas.findIndex( find => { return find.id == payload.id }), 1)
     },
     CHANGE_STATUS:(state, payload) => {
-      /* let item = state.tareas.find( find => { return find.id == payload.id });
-      item.completed = !item.completed */
+      let item = state.tareas.find( find => { return find.id == payload.id });
+      item.completed = !item.completed
     }
   },
   actions: {
@@ -52,7 +49,6 @@ export default new Vuex.Store({
       });
     },
     STATUS_TODO(context, payload){
-      payload.completed = !payload.completed
       return Api.updateStatus(payload);
     }
   }
