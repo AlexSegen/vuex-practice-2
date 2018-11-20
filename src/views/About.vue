@@ -24,10 +24,8 @@ export default {
   data(){
     return {}
   },
-  computed: {
-    tareas () {
-	    return this.$store.state.tareas
-    }
+  mounted(){
+    this.$store.dispatch("GET_TODOS");
   }
 }
 </script>

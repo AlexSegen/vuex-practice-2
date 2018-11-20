@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Api from '@/services/todo.services'
 
 Vue.use(Vuex)
 
@@ -8,36 +9,7 @@ export default new Vuex.Store({
     tarea: {
 
     },
-    tareas: [{
-      "id": 1,
-      "title": "delectus aut autem",
-      "completed": false
-      },
-      {
-      "id": 2,
-      "title": "quis ut nam facilis et officia qui",
-      "completed": false
-      },
-      {
-      "id": 3,
-      "title": "fugiat veniam minus",
-      "completed": false
-      },
-      {
-      "id": 4,
-      "title": "et porro tempora",
-      "completed": true
-      },
-      {
-      "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": false
-      },
-      {
-      "id": 6,
-      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-      "completed": false
-      }]
+    tareas: []
 
   },
   getters: {
@@ -49,6 +21,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    SET_TODOS: (state, payload) => {
+      state.tareas = payload;
+    },
     ADD_TODO: (state, payload) => {
         state.tareas.push(payload);    
     },
@@ -56,28 +31,29 @@ export default new Vuex.Store({
       state.tareas.splice(state.tareas.findIndex( find => { return find.id == payload.id }), 1)
     },
     CHANGE_STATUS:(state, payload) => {
-      let item = state.tareas.find( find => { return find.id == payload.id });
-      item.completed = !item.completed
+      /* let item = state.tareas.find( find => { return find.id == payload.id });
+      item.completed = !item.completed */
     }
   },
   actions: {
+    GET_TODOS: (context) => {
+        return Api.getAll().then(response => {
+          context.commit("SET_TODOS", response.data);
+        })
+    },
     NEW_TODO(context, payload){
-      let { data } =  new Promise(function(resolve, reject) {
-        context.commit('ADD_TODO', payload)
+      return Api.post(payload).then(response => {
+        context.commit('ADD_TODO', response.data);
       });
-      return data;
     },
     REMOVE_TODO(context, payload){
-      let { data } =  new Promise(function(resolve, reject) {
-        context.commit('DELETE_TODO', payload)
+      return Api.delete(payload).then(() => {
+        context.commit('DELETE_TODO', payload);
       });
-      return data;
     },
     STATUS_TODO(context, payload){
-      let { data } =  new Promise(function(resolve, reject) {
-        context.commit('CHANGE_STATUS', payload)
-      });
-      return data;
+      payload.completed = !payload.completed
+      return Api.updateStatus(payload);
     }
   }
 })

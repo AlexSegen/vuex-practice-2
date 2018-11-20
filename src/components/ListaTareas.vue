@@ -6,12 +6,17 @@
     </ul>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name:'ListaTareas',
   computed: {
     tareas () {
 	    return this.$store.state.tareas
-    }
+    },
+    //...mapGetters(["TODOS"])
+  },
+  mounted(){
+      
   }
 }
 </script>
