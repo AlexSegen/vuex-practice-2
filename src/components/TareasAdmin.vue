@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>About</h1>
+    <h1>Admin Tareas</h1>
     <hr>
     <div>
-      <input type="text" v-model="tarea.title"> <button type="button" @click="addItem()">Add</button>
+      <input type="text" v-model="tarea.title" @keydown.enter="addItem()"> <button type="button" @click="addItem()">Add</button>
     </div>
     <ul>
       <li v-for="item in tareas" :key="item.id">
@@ -40,6 +40,9 @@ export default {
   },
   methods: {
     addItem(){
+
+      if(this.tarea.title.toString().trim() == '')
+      return false
 
       this.$store.dispatch("NEW_TODO", this.tarea).then(() => {
           this.tarea = {

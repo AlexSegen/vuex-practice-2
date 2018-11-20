@@ -1,19 +1,13 @@
 <template>
   <div>
-    <h1>About</h1>
+    <h1>Tareas</h1>
     <hr>
     
     <lista-tareas/>
 
-
     <br><br><br>
-    <hr>
-
+    
     <gestionar-tareas/>
-
-
-
-
 
   </div>
 </template>
