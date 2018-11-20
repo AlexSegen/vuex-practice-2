@@ -46,7 +46,7 @@ export default {
   methods: {
     addItem(){
       if(this.tarea.title.toString().trim() == '')
-      return false    
+      return false
 
       this.$store.dispatch("NEW_TODO", this.tarea).then(() => {
         this.success = true;
@@ -55,13 +55,16 @@ export default {
             completed: false,
             title: ''
         }
+        setTimeout(() => {
+              this.success = false;
+        }, 3000);
       }).catch(error => {
         this.success = false;
         console.log(error)
       });
     },
     deleteItem(key){
-      if(confirm('¿Seguro?'))
+      //if(confirm('¿Seguro?'))
       this.$store.dispatch("REMOVE_TODO", key);
     },
     changeStatus(key){
