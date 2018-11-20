@@ -1,9 +1,14 @@
 <template>
-    <ul>
-      <li v-for="item in tareas" :key="item.id">
-        <small>[ID: {{ item.id }} ] </small><span :class="item.completed ? 'done':''"> {{ item.title }} </span>
-      </li>
-    </ul>
+    <div>
+      <ol class="todo-list" v-if="tareas.length > 0">
+        <li v-for="item in tareas" :key="item.id">
+          <span v-text="item.completed ? '✅':'🔳'" ></span>
+          <span :class="item.completed ? 'done':''"> {{ item.title }} </span>
+        </li>
+      </ol>
+      <p v-else>No hay tareas</p>
+    </div>
+
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -14,14 +19,6 @@ export default {
 	    return this.$store.state.tareas
     },
     //...mapGetters(["TODOS"])
-  },
-  mounted(){
-      
   }
 }
 </script>
-<style>
-.done {
-  text-decoration: line-through;
-}
-</style>
