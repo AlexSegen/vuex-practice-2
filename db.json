@@ -16,7 +16,7 @@
       "title": "Aprender autenticación"
     },
     {
-      "completed": false,
+      "completed": true,
       "title": "Aprender ExpressJS",
       "id": "TKXRiNd"
     },
@@ -31,7 +31,7 @@
       "id": "jH6XTgL"
     },
     {
-      "completed": false,
+      "completed": true,
       "title": "Adjuntar Curriculum a Pixelagil",
       "id": "d7NqiX0"
     }

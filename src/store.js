@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Api from '@/services/todo.services'
-import Auth from '@/auth'
 import auth from './auth';
 
 Vue.use(Vuex)
