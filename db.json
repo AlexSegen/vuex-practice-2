@@ -12,28 +12,13 @@
     },
     {
       "id": "_joq6mwf3xn1xh11j6",
-      "completed": false,
+      "completed": true,
       "title": "Aprender autenticación"
     },
     {
       "completed": false,
       "title": "Aprender ExpressJS",
       "id": "TKXRiNd"
-    },
-    {
-      "completed": true,
-      "title": "test",
-      "id": "tCN6_mv"
-    },
-    {
-      "id": "_jorar0xufv52oz1v8",
-      "completed": false,
-      "title": "Aprender a usar loading"
-    },
-    {
-      "id": "_jorbefyjznbnq86xf",
-      "completed": false,
-      "title": "555"
     }
   ]
 }

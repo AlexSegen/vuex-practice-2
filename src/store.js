@@ -24,20 +24,16 @@ export default new Vuex.Store({
     },
     SET_TODOS: (state, payload) => {
       state.tareas = payload;
-      state.loading = false;
     },
     ADD_TODO: (state, payload) => {
         state.tareas.push(payload);
-        state.loading = false;
     },
     DELETE_TODO: (state, payload) => {
       state.tareas.splice(state.tareas.findIndex( find => { return find.id == payload.id }), 1)
-      state.loading = false;
     },
     CHANGE_STATUS:(state, payload) => {
       let item = state.tareas.find( find => { return find.id == payload.id });
       item.completed = !item.completed
-      state.loading = false;
     }
   },
   actions: {
