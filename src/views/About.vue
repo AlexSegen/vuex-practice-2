@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Tareas</h1>
+    <span>Pendientes: {{ pending }} / Terminadas: {{ completed }} </span>
     <hr>
     <span id="sys-msg" class="sys-msg error" v-if="error" v-text="'😓 Error de conexión'">
     </span>
@@ -27,6 +28,14 @@ export default {
       error:''
     };
   },
+  computed:{
+    completed(){
+      return this.$store.state.tareas.filter(tarea => tarea.completed).length
+    },
+    pending(){
+      return this.$store.state.tareas.filter(tarea => !tarea.completed).length
+    }
+  },
   mounted() {
     this.error = false;
     this.$store.dispatch("GET_TODOS").catch(error => {
@@ -39,6 +48,10 @@ export default {
 </script>
 
 <style>
+h1 small {
+  font-size: 14px;
+  font-weight: normal;
+}
 button {
   cursor: pointer;
   background: transparent;
