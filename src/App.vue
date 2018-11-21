@@ -39,6 +39,8 @@ export default {
       let payload = this.payload;
       this.$store.dispatch('LOGIN', payload).then(() => {
         console.log('Logged in!');
+      }).catch(error => {
+        console.log(error);
       })
     },
     logout(){
