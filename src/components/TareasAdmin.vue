@@ -74,7 +74,9 @@ export default {
       });
     },
     changeStatus(key){
-      this.$store.dispatch("STATUS_TODO", key);
+      this.$store.dispatch("STATUS_TODO", key).catch(error => {
+        this.$store.commit("LOADING", false);
+      });
     }
   }
 }
