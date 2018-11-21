@@ -1,4 +1,6 @@
 import axios from 'axios';
+import store from '../store'
+import { error } from 'util';
 
 const http = axios.create({
     baseURL: 'https://mynotesapp2018.herokuapp.com/api',
@@ -10,10 +12,21 @@ const http = axios.create({
 export default {
 
     login(payload){
-        return http.post('/auth/login', payload)
+        try {
+            return http.post('/auth/login', payload)
+        } 
+        catch {
+            store.commit('LOADING', false);
+            return error
+        }
     },
     logout(){
-        localStorage.removeItem('session');
+        try {
+            store.commit('SET_AUTH', false);
+            localStorage.removeItem('session');
+        } catch {
+            return error
+        }
     }
 
 }

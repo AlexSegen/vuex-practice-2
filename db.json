@@ -2,7 +2,7 @@
   "todos": [
     {
       "id": "_joq6etkumh0hxhl1f",
-      "completed": true,
+      "completed": false,
       "title": "Leer sobre FLUX"
     },
     {
@@ -16,9 +16,24 @@
       "title": "Aprender autenticación"
     },
     {
-      "completed": true,
+      "completed": false,
       "title": "Aprender ExpressJS",
       "id": "TKXRiNd"
+    },
+    {
+      "completed": false,
+      "title": "Optimizar codigo Pixelagil",
+      "id": "xosjQzr"
+    },
+    {
+      "completed": false,
+      "title": "Actualizar Portafolio",
+      "id": "jH6XTgL"
+    },
+    {
+      "completed": false,
+      "title": "Adjuntar Curriculum a Pixelagil",
+      "id": "d7NqiX0"
     }
   ]
 }
