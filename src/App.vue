@@ -42,6 +42,7 @@ export default {
       })
     },
     logout(){
+      Auth.logout();
       this.$store.commit('SET_AUTH', false);
     }
   }

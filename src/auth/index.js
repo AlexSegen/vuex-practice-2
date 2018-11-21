@@ -11,6 +11,9 @@ export default {
 
     login(payload){
         return http.post('/auth/login', payload)
+    },
+    logout(){
+        localStorage.removeItem('session');
     }
 
 }

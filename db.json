@@ -2,7 +2,7 @@
   "todos": [
     {
       "id": "_joq6etkumh0hxhl1f",
-      "completed": false,
+      "completed": true,
       "title": "Leer sobre FLUX"
     },
     {
@@ -16,14 +16,9 @@
       "title": "Aprender autenticación"
     },
     {
-      "completed": false,
+      "completed": true,
       "title": "Aprender ExpressJS",
       "id": "TKXRiNd"
-    },
-    {
-      "id": "_jorl0ggaxdyxt3vq7",
-      "completed": true,
-      "title": "agregar"
     }
   ]
 }
