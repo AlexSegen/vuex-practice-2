@@ -9,10 +9,8 @@
     :class="success ? 'success':'error'"
     v-text="success ? '😁 Tarea agregada':'😓 Hubo un Error'">
     </span>
-    
-    <div v-if="loading" class="loader">
-      <div>🌀</div> Cargando...
-    </div>
+
+    <loading/>
 
     <ul class="todo-list-none" v-if="tareas.length > 0">
       <li v-for="item in tareas" :key="item.id">
@@ -44,9 +42,6 @@ export default {
   computed: {
     tareas () {
 	    return this.$store.state.tareas
-    },
-    loading() {
-      return this.$store.state.loading;
     }
   },
   mounted(){

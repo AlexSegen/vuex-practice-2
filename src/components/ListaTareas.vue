@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-if="loading" class="loader">
-      <div>🌀</div> Cargando...
-    </div>
+    
+    <loading/>
 
     <ol class="todo-list" v-if="tareas.length > 0">
       <li v-for="item in tareas" :key="item.id">

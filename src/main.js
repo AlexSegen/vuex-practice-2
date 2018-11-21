@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+import Loading from './components/Loading.vue';
+Vue.component('loading', Loading);
 
 new Vue({
   router,
