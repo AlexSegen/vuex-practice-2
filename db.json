@@ -6,7 +6,7 @@
       "title": "Leer sobre FLUX"
     },
     {
-      "completed": false,
+      "completed": true,
       "title": "Aprender VueX",
       "id": "Exfd_tk"
     },
@@ -21,9 +21,19 @@
       "id": "TKXRiNd"
     },
     {
-      "id": "_joq8ropx2sol95or3",
+      "completed": true,
+      "title": "test",
+      "id": "tCN6_mv"
+    },
+    {
+      "id": "_jorar0xufv52oz1v8",
       "completed": false,
-      "title": "testing"
+      "title": "Aprender a usar loading"
+    },
+    {
+      "id": "_jorbefyjznbnq86xf",
+      "completed": false,
+      "title": "555"
     }
   ]
 }

@@ -2,7 +2,8 @@
   <div>
     <h1>Tareas</h1>
     <hr>
-    
+    <span id="sys-msg" class="sys-msg error" v-if="error" v-text="'😓 Error de conexión'">
+    </span>
     <lista-tareas/>
 
     <br><br><br>
@@ -22,10 +23,17 @@ export default {
     ListaTareas
   },
   data() {
-    return {};
+    return {
+      error:''
+    };
   },
   mounted() {
-    this.$store.dispatch("GET_TODOS");
+    this.error = false;
+    this.$store.dispatch("GET_TODOS").catch(error => {
+      this.$store.commit("LOADING", false);
+      this.error = true;
+      console.log(error);
+    });
   }
 };
 </script>
@@ -96,6 +104,10 @@ button {
     opacity: 0;
   }
   25% {
+    transform: rotate(0) translateX(0);
+    opacity: 1;
+  }
+  75% {
     transform: rotate(0) translateX(0);
     opacity: 1;
   }
