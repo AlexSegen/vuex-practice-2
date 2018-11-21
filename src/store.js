@@ -20,11 +20,17 @@ export default new Vuex.Store({
     LOGGEDIN: state => {
       return state.loggedIn
     },
-    TODOS: state => {
+    TODO: state => {
       return state.tarea;
     },
     TODOS: state => {
       return state.tareas;
+    },
+    COMPLETED_TODOS: state => {
+      return state.tareas.filter(tarea => tarea.completed).length;
+    },
+    PENDING_TODOS: state => {
+      return state.tareas.filter(tarea => !tarea.completed).length;
     }
   },
   mutations: {

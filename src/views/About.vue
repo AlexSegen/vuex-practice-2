@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Tareas</h1>
-    <span>Pendientes: {{ pending }} / Terminadas: {{ completed }} </span>
+    <span>Todas: {{ TODOS.length }} / Pendientes: {{ PENDING_TODOS }} / Terminadas: {{ COMPLETED_TODOS }} </span>
     <hr>
     <span id="sys-msg" class="sys-msg error" v-if="error" v-text="'😓 Error de conexión'">
     </span>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import gestionarTareas from "@/components/TareasAdmin";
 import ListaTareas from "@/components/ListaTareas";
 export default {
@@ -29,14 +30,9 @@ export default {
     };
   },
   computed:{
+    ...mapGetters(['TODOS','COMPLETED_TODOS','PENDING_TODOS']),
     loggedIn(){
       return this.$store.state.loggedIn
-    },
-    completed(){
-      return this.$store.state.tareas.filter(tarea => tarea.completed).length
-    },
-    pending(){
-      return this.$store.state.tareas.filter(tarea => !tarea.completed).length
     }
   },
   mounted() {
