@@ -56,10 +56,25 @@ export default new Vuex.Store({
     LOGIN: async(context, payload) => {
       context.commit("LOADING", true)
       return await auth.login(payload).then(response => {
-        context.commit("SET_USER", response.data);
+        context.commit("SET_USER", response.data.user);
         context.commit("SET_AUTH", true);
         context.commit("LOADING", false)
+        localStorage.setItem('session', JSON.stringify(response.data));
       });
+    },
+    CHECK_AUTH: (context, payload) => {
+      let session = localStorage.getItem("session");
+      if(session == null) {
+        context.commit("SET_AUTH", false);
+      } else {
+        let auth = JSON.parse(localStorage.getItem('session'));
+        if(auth.auth){
+          context.commit("SET_AUTH", true);
+          context.commit("SET_USER", auth.user);
+        } else {
+          context.commit("SET_AUTH", false);
+        }
+      }
     },
     GET_TODOS: (context) => {
         context.commit("LOADING", true)

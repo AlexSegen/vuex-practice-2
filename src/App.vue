@@ -5,7 +5,7 @@
       <router-link to="/about">About</router-link> |
       <a v-if="!loggedIn" href="javascript:void(0)" @click="login()">Login</a> 
       <template v-if="loggedIn">
-        <span>{{user.user.name}}</span> <a href="javascript:void(0)" @click="logout()">(Salir)</a>
+        <span>{{ user.name }}</span> <a href="javascript:void(0)" @click="logout()">(Salir)</a>
       </template>
     </div>
     <router-view/>
@@ -30,6 +30,9 @@ export default {
     user(){
       return this.$store.state.user
     }
+  },
+  mounted(){
+    this.$store.dispatch("CHECK_AUTH");
   },
   methods: {
     login(){
