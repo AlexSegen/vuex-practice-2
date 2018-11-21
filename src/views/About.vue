@@ -9,7 +9,7 @@
 
     <br><br><br>
     
-    <gestionar-tareas/>
+    <gestionar-tareas v-if="loggedIn"/>
 
   </div>
 </template>
@@ -29,6 +29,9 @@ export default {
     };
   },
   computed:{
+    loggedIn(){
+      return this.$store.state.loggedIn
+    },
     completed(){
       return this.$store.state.tareas.filter(tarea => tarea.completed).length
     },

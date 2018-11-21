@@ -1,16 +1,26 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Api from '@/services/todo.services'
+import Auth from '@/auth'
+import auth from './auth';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tarea: {},
+    tarea: null,
     tareas: [],
-    loading: true,
+    loading: null,
+    loggedIn: false,
+    user: null
   },
   getters: {
+    USER: state => {
+      return state.user
+    },
+    LOGGEDIN: state => {
+      return state.loggedIn
+    },
     TODOS: state => {
       return state.tarea;
     },
@@ -19,6 +29,12 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    SET_USER: (state, payload) => {
+      state.user = payload;
+    },
+    SET_AUTH: (state, payload) => {
+      state.loggedIn = payload;
+    },
     LOADING: (state, payload) => {
       state.loading = payload;
     },
@@ -37,6 +53,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    LOGIN: async(context, payload) => {
+      context.commit("LOADING", true)
+      return await auth.login(payload).then(response => {
+        context.commit("SET_USER", response.data);
+        context.commit("SET_AUTH", true);
+        context.commit("LOADING", false)
+      });
+    },
     GET_TODOS: (context) => {
         context.commit("LOADING", true)
         return Api.getAll().then(response => {
