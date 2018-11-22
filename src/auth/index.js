@@ -15,7 +15,7 @@ export default {
         try {
             return http.post('/auth/login', payload)
         } 
-        catch {
+        catch (error) {
             store.commit('LOADING', false);
             return error
         }
@@ -24,7 +24,7 @@ export default {
         try {
             store.commit('SET_AUTH', false);
             localStorage.removeItem('session');
-        } catch {
+        } catch (error) {
             return error
         }
     }

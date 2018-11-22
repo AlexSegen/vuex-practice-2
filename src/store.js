@@ -65,6 +65,9 @@ export default new Vuex.Store({
         context.commit("SET_AUTH", true);
         context.commit("LOADING", false)
         localStorage.setItem('session', JSON.stringify(response.data));
+      }).catch (error => {
+        console.log(error.message)
+        context.commit("LOADING", false)
       });
     },
     CHECK_AUTH: (context, payload) => {

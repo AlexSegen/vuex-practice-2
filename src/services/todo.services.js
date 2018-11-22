@@ -4,7 +4,13 @@ let RESOURCE_NAME = '/todos'
 
 export default {
     getAll(){
-        return $http.get(RESOURCE_NAME);
+        try {
+            return $http.get(RESOURCE_NAME);
+        }
+        catch (e) {
+            return console.log(e);
+        }
+        
     },
     post(payload){
         return $http.post(RESOURCE_NAME, payload)

@@ -3,7 +3,7 @@
     <h1>Tareas</h1>
     <span>Todas: {{ TODOS.length }} / Pendientes: {{ PENDING_TODOS }} / Terminadas: {{ COMPLETED_TODOS }} </span>
     <hr>
-    <span id="sys-msg" class="sys-msg error" v-if="error" v-text="'😓 Error de conexión'">
+    <span id="sys-msg" class="sys-msg error" v-if="error.value" v-text="'😓 ' + error.message">
     </span>
     <lista-tareas/>
 
@@ -26,7 +26,10 @@ export default {
   },
   data() {
     return {
-      error:''
+      error:{
+        value: false,
+        message: ''
+      }
     };
   },
   computed:{
@@ -39,8 +42,11 @@ export default {
     this.error = false;
     this.$store.dispatch("GET_TODOS").catch(error => {
       this.$store.commit("LOADING", false);
-      this.error = true;
-      console.log(error);
+      this.error = {
+        value: true,
+        message: error.message
+      }
+      console.log(error.message);
     });
   }
 };
